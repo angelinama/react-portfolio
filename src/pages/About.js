@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Hero from "../components/Hero";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Container from "../components/Container";
 // import Row from "../components/Row";
 // import Col from "../components/Col";
@@ -17,7 +18,9 @@ function About() {
             <div className="row mt-3">
               <div className="col-md-3">
                 <img
-                  src="./images/Angelina_Horizotal.jpg"
+                  src={
+                    process.env.PUBLIC_URL + "/images/Angelina_Horizotal.jpg"
+                  }
                   alt="Angelina travel pic"
                   className="img-thumbnail"
                 />
@@ -65,10 +68,10 @@ function About() {
                 <p>Download my resume</p>
                 <a
                   className="h1"
-                  href="Assets/Resume/March-2021-fullstack.docx.pdf"
+                  href="./resume/March-2021-fullstack.docx.pdf"
                   download
                 >
-                  <i className="fa fa-file"></i>
+                  <FontAwesomeIcon icon="file-download" />
                 </a>
               </div>
             </div>

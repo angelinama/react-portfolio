@@ -37,7 +37,11 @@ main {
   font-size: 34px;
 }
 
-.card-img-overlay {
+.mycard-img-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
   bottom: 1.25rem;
+  padding: 0.25rem;
   top: auto;
 }

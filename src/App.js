@@ -7,7 +7,15 @@ import { Navbar, Nav } from "react-bootstrap";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import {
+  faFileDownload,
+  faExternalLinkAlt,
+} from "@fortawesome/free-solid-svg-icons";
+
 function App() {
+  library.add(fab, faFileDownload, faExternalLinkAlt);
   return (
     <HashRouter basename="/">
       <div>
