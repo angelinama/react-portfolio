@@ -106,20 +106,20 @@ class Project extends Component {
               <div className="col-12 col-md-6">
                 <div className="card">
                   <img
-                    src="http://placehold.it/150x150"
+                    src={process.env.PUBLIC_URL + "/images/focal-local.jpg"}
                     alt="place holder"
                     className="card-img"
                   />
                   <div className="mycard-img-overlay bg-info text-white text-center">
-                    <h5 className="card-title">Rock Paper Scissors</h5>
+                    <h5 className="card-title">Focal Local</h5>
                   </div>
                 </div>
                 <h6 className="text-muted text-center">
                   Links:
-                  <a href="https://github.com/benrgross/Whats-For-Dinner">
+                  <a href="https://github.com/angelinama/focal-local">
                     <FontAwesomeIcon icon={["fab", "github"]} />{" "}
                   </a>
-                  <a href="https://benrgross.github.io/Whats-For-Dinner/">
+                  <a href="https://focal-local.herokuapp.com/">
                     <FontAwesomeIcon icon="external-link-alt" />
                   </a>
                 </h6>

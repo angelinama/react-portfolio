@@ -12,10 +12,12 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import {
   faFileDownload,
   faExternalLinkAlt,
+  faEnvelope,
+  faMobileAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
-  library.add(fab, faFileDownload, faExternalLinkAlt);
+  library.add(fab, faFileDownload, faExternalLinkAlt, faEnvelope, faMobileAlt);
   return (
     <HashRouter basename="/">
       <div>
