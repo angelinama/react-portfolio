@@ -1,61 +1,89 @@
-import React, { Component } from "react";
+import React, { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import emailjs from "emailjs-com";
+require("dotenv").config();
 
-export default class Contact extends Component {
-  render() {
-    return (
-      <div class="container-md">
-        <div class="row mx-0">
-          <div class="col-12 col-md-8 border bg-white py-4">
-            <div class="page-header border-bottom">
-              <h1 class="h1 text-info">Contact</h1>
-            </div>
-            <div class="row mt-3">
-              <form class="col text-muted">
-                <div class="form-group">
-                  <label for="exampleInputName1">Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleInputName1"
-                    placeholder="John Smith"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    placeholder="example@google.com"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Message</label>
-                  <textarea
-                    class="form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="6"
-                  ></textarea>
-                </div>
-                <button type="submit" class="btn btn-info">
-                  Submit
-                </button>
-              </form>
-            </div>
-            <div class="row mt-3">
-              <div class="col text-muted">
-                <p>
-                  <FontAwesomeIcon icon="envelope" />: angelina890308@gmail.com
-                </p>
-                <p>
-                  <FontAwesomeIcon icon="mobile-alt" />: 607-793-7301
-                </p>
+export default function Contact() {
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
+
+  function sendEmail(e) {
+    e.preventDefault();
+
+    const fromName = nameRef.current.value;
+    const fromEmail = emailRef.current.value;
+    const content = messageRef.current.value;
+
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAIL_SEVICE_ID,
+        process.env.REACT_APP_EMAIL_TEMPLATE_ID,
+        e.target,
+        process.env.REACT_APP_EMAIL_USER_ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  }
+
+  return (
+    <div className="container-md">
+      <div className="row mx-0">
+        <div className="col-12 col-md-8 border bg-white py-4">
+          <div className="page-header border-bottom">
+            <h1 className="h1 text-info">Contact</h1>
+          </div>
+          <div className="row mt-3">
+            <form className="col text-muted" onSubmit={sendEmail}>
+              <div className="form-group">
+                <label htmlFor="exampleInputName1">Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputName1"
+                  placeholder="John Smith"
+                />
               </div>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  placeholder="example@google.com"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleFormControlTextarea1">Message</label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="6"
+                ></textarea>
+              </div>
+              <button type="submit" className="btn btn-info">
+                Submit
+              </button>
+            </form>
+          </div>
+          <div className="row mt-3">
+            <div className="col text-muted">
+              <p>
+                <FontAwesomeIcon icon="envelope" />: angelina890308@gmail.com
+              </p>
+              <p>
+                <FontAwesomeIcon icon="mobile-alt" />: 607-793-7301
+              </p>
             </div>
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
