@@ -4,16 +4,8 @@ import emailjs from "emailjs-com";
 require("dotenv").config();
 
 export default function Contact() {
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const messageRef = useRef();
-
   function sendEmail(e) {
     e.preventDefault();
-
-    const fromName = nameRef.current.value;
-    const fromEmail = emailRef.current.value;
-    const content = messageRef.current.value;
 
     emailjs
       .sendForm(
@@ -48,6 +40,7 @@ export default function Contact() {
                   className="form-control"
                   id="exampleInputName1"
                   placeholder="John Smith"
+                  name="from_name"
                 />
               </div>
               <div className="form-group">
@@ -57,6 +50,7 @@ export default function Contact() {
                   className="form-control"
                   id="exampleInputEmail1"
                   placeholder="example@google.com"
+                  name="reply_to"
                 />
               </div>
               <div className="form-group">
@@ -65,6 +59,7 @@ export default function Contact() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="6"
+                  name="message"
                 ></textarea>
               </div>
               <button type="submit" className="btn btn-info">
