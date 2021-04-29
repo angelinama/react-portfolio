@@ -1,6 +1,4 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Hero from "../components/Hero";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function About() {

@@ -1,9 +1,15 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import emailjs from "emailjs-com";
 require("dotenv").config();
 
 export default function Contact() {
+  //for modal message after email is successfully sent
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   function sendEmail(e) {
     e.preventDefault();
 
@@ -17,9 +23,15 @@ export default function Contact() {
       .then(
         (result) => {
           console.log(result.text);
+          if (result.text === "OK") {
+            handleShow();
+          }
         },
         (error) => {
           console.log(error.text);
+          alert(
+            "There is an error to send message. Please use the contact information after the form!"
+          );
         }
       );
   }
@@ -79,6 +91,17 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton className="text-info bg-light">
+          <Modal.Title>Success</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Your message has been sent successfully!</Modal.Body>
+      </Modal>
     </div>
   );
 }
