@@ -1,6 +1,6 @@
 # react-portfolio
 
-Portfolio that includes all my react/full-stack projects
+Portfolio that includes some of my react/full-stack projects
 
 ## deploy link
 
